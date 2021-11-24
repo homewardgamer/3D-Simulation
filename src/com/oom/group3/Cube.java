@@ -5,26 +5,15 @@ import java.awt.*;
 import java.awt.event.*;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.ArrayList;
 import java.awt.image.BufferedImage;
 
 public class Cube {
     static Integer[] prevMouse = { null, null };
     static double pitch, roll, heading, fovValue;
+    static final int windowSize = 900;
 
     public static void main(String[] args) {
-        // Use an appropriate Look and Feel
-        try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
-        } catch (UnsupportedLookAndFeelException | IllegalAccessException | InstantiationException
-                | ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
-
-        // Turn off metal's use of bold fonts
-        UIManager.put("swing.boldMetal", Boolean.FALSE);
-
         // Schedule a job for the event dispatch thread:
         // creating and showing this application's GUI.
         SwingUtilities.invokeLater(new Runnable() {
@@ -36,7 +25,7 @@ public class Cube {
 
     public static void resetValues() {
         pitch = roll = heading = 0;
-        fovValue = 108;
+        fovValue = 132;
     }
 
     public static void createAndShowGUI() {
@@ -50,7 +39,7 @@ public class Cube {
                 g2.setColor(Color.BLACK);
                 g2.fillRect(0, 0, getWidth(), getHeight());
 
-                ArrayList<Polygon3D> polygons=new Object3D().getPolygons();
+                ArrayList<Polygon3D> polygons = new Object3D().getPolygons();
 
                 Matrix4 headingTransform = new Matrix4(new double[] { Math.cos(heading), 0, -Math.sin(heading), 0, 0, 1,
                         0, 0, Math.sin(heading), 0, Math.cos(heading), 0, 0, 0, 0, 1 });
@@ -139,57 +128,14 @@ public class Cube {
             }
         };
 
-        frame.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent mouseEvent) {
-                saveMousePosition(renderPanel, mouseEvent);
-            }
-
-            @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent mouseEvent) {
-                renderPanel.setCursor(Cursor.getDefaultCursor());
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-
-            }
-        });
-        frame.addMouseMotionListener(new MouseMotionListener() {
-            @Override
-            public void mouseDragged(MouseEvent mouseEvent) {
-                renderPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                saveMousePosition(renderPanel, mouseEvent);
-            }
-
-            @Override
-            public void mouseMoved(MouseEvent mouseEvent) {
-                saveMousePosition(renderPanel, mouseEvent);
-            }
-        });
-
-        frame.addMouseWheelListener(new MouseWheelListener() {
-            @Override
-            public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
-                saveMousePosition(renderPanel, mouseWheelEvent);
-            }
-        });
+        setupMouseListeners(frame, renderPanel);
 
         frame.setTitle("OOM Project3");
         frame.add(renderPanel);
-        frame.setSize(640, 640);
+        frame.setSize(windowSize, windowSize);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
@@ -233,5 +179,51 @@ public class Cube {
         int blue = (int) Math.pow(blueLinear, 1 / 2.4);
 
         return new Color(red, green, blue);
+    }
+
+    public static void setupMouseListeners(JFrame frame, JPanel renderPanel) {
+        frame.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                saveMousePosition(renderPanel, mouseEvent);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+                renderPanel.setCursor(Cursor.getDefaultCursor());
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+            }
+        });
+
+        frame.addMouseMotionListener(new MouseMotionListener() {
+            @Override
+            public void mouseDragged(MouseEvent mouseEvent) {
+                renderPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                saveMousePosition(renderPanel, mouseEvent);
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent mouseEvent) {
+                saveMousePosition(renderPanel, mouseEvent);
+            }
+        });
+
+        frame.addMouseWheelListener(new MouseWheelListener() {
+            @Override
+            public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
+                saveMousePosition(renderPanel, mouseWheelEvent);
+            }
+        });
     }
 }
