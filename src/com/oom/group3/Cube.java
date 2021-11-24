@@ -41,24 +41,33 @@ public class Cube {
 
                 ArrayList<Polygon3D> polygons = new Object3D().getPolygons();
 
-                Matrix4 headingTransform = new Matrix4(new double[] { Math.cos(heading), 0, -Math.sin(heading), 0, 0, 1,
-                        0, 0, Math.sin(heading), 0, Math.cos(heading), 0, 0, 0, 0, 1 });
+                Matrix4 headingTransform = new Matrix4(new double[] {
+                        Math.cos(heading), 0, -Math.sin(heading), 0, 0, 1,
+                        0, 0, Math.sin(heading), 0, Math.cos(heading), 0, 0, 0, 0, 1
+                });
 
-                Matrix4 pitchTransform = new Matrix4(new double[] { 1, 0, 0, 0, 0, Math.cos(pitch), Math.sin(pitch), 0,
-                        0, -Math.sin(pitch), Math.cos(pitch), 0, 0, 0, 0, 1 });
+                Matrix4 pitchTransform = new Matrix4(new double[] {
+                        1, 0, 0, 0, 0, Math.cos(pitch), Math.sin(pitch), 0,
+                        0, -Math.sin(pitch), Math.cos(pitch), 0, 0, 0, 0, 1
+                });
 
-                Matrix4 rollTransform = new Matrix4(new double[] { Math.cos(roll), -Math.sin(roll), 0, 0,
-                        Math.sin(roll), Math.cos(roll), 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 });
+                Matrix4 rollTransform = new Matrix4(new double[] {
+                        Math.cos(roll), -Math.sin(roll), 0, 0,
+                        Math.sin(roll), Math.cos(roll), 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+                });
 
-                Matrix4 panOutTransform = new Matrix4(
-                        new double[] { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, -400, 1 });
+                Matrix4 panOutTransform = new Matrix4(new double[] {
+                        1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, -400, 1
+                });
 
                 double viewportWidth = getWidth();
                 double viewportHeight = getHeight();
                 double fovAngle = Math.toRadians(fovValue);
                 double fov = Math.tan(fovAngle / 2) * 170;
 
-                Matrix4 transform = headingTransform.multiply(pitchTransform).multiply(rollTransform)
+                Matrix4 transform = headingTransform
+                        .multiply(pitchTransform)
+                        .multiply(rollTransform)
                         .multiply(panOutTransform);
 
                 BufferedImage img = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
