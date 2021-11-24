@@ -1,19 +1,12 @@
 package com.oom.group3;
 
-import com.oom.group3.util.Vector;
-
-import java.awt.Color;
-
 public class Point3D {
-    Vector point;
-    Color color;
+    public double x, y, z, w;
 
-    Point3D(Vector point, Color color) {
-        this.point = point;
-        this.color = color;
-    }
-
-    void draw() {
-        // draw the point
+    public Point3D(double x, double y, double z, double w) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.w = w;
     }
 }
