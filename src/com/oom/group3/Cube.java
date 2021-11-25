@@ -1,9 +1,13 @@
 package com.oom.group3;
 
-// Swing imports
+// the cube shape
 import com.oom.group3.shapes.CubeShape;
+
+// mathematics utilities
+import com.oom.group3.util.Matrix4;
 import com.oom.group3.util.Vector;
 
+// Swing imports
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;

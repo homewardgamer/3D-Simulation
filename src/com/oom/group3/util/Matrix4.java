@@ -1,4 +1,6 @@
-package com.oom.group3;
+package com.oom.group3.util;
+
+import com.oom.group3.Point3D;
 
 public class Matrix4 {
     // list of matrix values
