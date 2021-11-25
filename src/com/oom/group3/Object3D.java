@@ -8,7 +8,8 @@ public class Object3D {
     public ArrayList<Polygon3D>polygons;
     public Object3D(){
         polygons = new ArrayList<>();
-
+        
+        //each face of a the cube consists of two triangles..
         // A
         polygons.add(new Polygon3D(new Point3D(-100, 100, 100, 1), new Point3D(100, 100, 100, 1),
                 new Point3D(-100, 100, -100, 1), Color.CYAN));

@@ -1,5 +1,6 @@
 package com.oom.group3;
 
+//Point3D is the Vertex
 public class Point3D {
     public double x, y, z, w;
 

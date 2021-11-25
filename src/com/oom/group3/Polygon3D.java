@@ -2,6 +2,7 @@ package com.oom.group3;
 
 import java.awt.Color;
 
+//Here Polygon3D is the Triangle
 public class Polygon3D {
     public Point3D v1, v2, v3;
     public Color color;
