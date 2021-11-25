@@ -201,6 +201,7 @@ public class Cube {
         return new Color(red, green, blue);
     }
 
+    // to interpret keyboard input
     public static void setupKeyboardListeners(JFrame frame, JPanel renderPanel) {
         frame.addKeyListener(new KeyListener() {
             @Override
@@ -221,6 +222,7 @@ public class Cube {
         });
     }
 
+    // to interpret and render mouse movements
     public static void setupMouseListeners(JFrame frame, JPanel renderPanel) {
         frame.addMouseListener(new MouseListener() {
             @Override
