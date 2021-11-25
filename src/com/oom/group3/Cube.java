@@ -25,7 +25,7 @@ public class Cube {
 
     public static void resetValues() {
         pitch = roll = heading = 0;
-        fovValue = 132;
+        fovValue = 60;
     }
 
     public static void createAndShowGUI() {
@@ -63,7 +63,7 @@ public class Cube {
                 double viewportWidth = getWidth();
                 double viewportHeight = getHeight();
                 double fovAngle = Math.toRadians(fovValue);
-                double fov = Math.tan(fovAngle / 2) * 170;
+                double fov = Math.tan(fovAngle / 2) / 200;
 
                 Matrix4 transform = headingTransform
                         .multiply(pitchTransform)
@@ -93,12 +93,12 @@ public class Cube {
 
                     double angleCos = Math.abs(norm.z);
 
-                    v1.x = v1.x / (-v1.z) * fov;
-                    v1.y = v1.y / (-v1.z) * fov;
-                    v2.x = v2.x / (-v2.z) * fov;
-                    v2.y = v2.y / (-v2.z) * fov;
-                    v3.x = v3.x / (-v3.z) * fov;
-                    v3.y = v3.y / (-v3.z) * fov;
+                    v1.x = v1.x / (-v1.z) / fov;
+                    v1.y = v1.y / (-v1.z) / fov;
+                    v2.x = v2.x / (-v2.z) / fov;
+                    v2.y = v2.y / (-v2.z) / fov;
+                    v3.x = v3.x / (-v3.z) / fov;
+                    v3.y = v3.y / (-v3.z) / fov;
 
                     v1.x += viewportWidth / 2;
                     v1.y += viewportHeight / 2;
@@ -125,7 +125,15 @@ public class Cube {
                                 int zIndex = y * img.getWidth() + x;
 
                                 if (zBuffer[zIndex] < depth) {
-                                    img.setRGB(x, y, getShade(t.color, angleCos).getRGB());
+                                    final double k = 0.025;
+
+                                    if (b1 >= k && b1 <= 1-k && b2 >= k && b2 <= 1-k && b3 >= k && b3 <= 1-k) {
+                                        img.setRGB(x, y, getShade(t.color, angleCos).getRGB());
+                                    }
+                                    else {
+                                        img.setRGB(x, y, getShade(Color.DARK_GRAY, angleCos).getRGB());
+                                    }
+
                                     zBuffer[zIndex] = depth;
                                 }
                             }
@@ -169,7 +177,7 @@ public class Cube {
             }
         } else if (mouseEvent.getID() == MouseEvent.MOUSE_WHEEL) {
             if (mouseEvent.getClass() == MouseWheelEvent.class && mouseEvent.isControlDown()) {
-                fovValue -= 4 * ((MouseWheelEvent) mouseEvent).getWheelRotation();
+                fovValue += 4 * ((MouseWheelEvent) mouseEvent).getWheelRotation();
                 renderPanel.repaint();
             }
         }
@@ -179,13 +187,15 @@ public class Cube {
     }
 
     public static Color getShade(Color color, double shade) {
-        double redLinear = Math.pow(color.getRed(), 2.4) * shade;
-        double greenLinear = Math.pow(color.getGreen(), 2.4) * shade;
-        double blueLinear = Math.pow(color.getBlue(), 2.4) * shade;
+        final double shadingMultiplier = 2.4;
 
-        int red = (int) Math.pow(redLinear, 1 / 2.4);
-        int green = (int) Math.pow(greenLinear, 1 / 2.4);
-        int blue = (int) Math.pow(blueLinear, 1 / 2.4);
+        double redLinear = Math.pow(color.getRed(), shadingMultiplier) * shade;
+        double greenLinear = Math.pow(color.getGreen(), shadingMultiplier) * shade;
+        double blueLinear = Math.pow(color.getBlue(), shadingMultiplier) * shade;
+
+        int red = (int) Math.pow(redLinear, 1 / shadingMultiplier);
+        int green = (int) Math.pow(greenLinear, 1 / shadingMultiplier);
+        int blue = (int) Math.pow(blueLinear, 1 / shadingMultiplier);
 
         return new Color(red, green, blue);
     }
