@@ -200,7 +200,7 @@ public class Cube {
         return new Color(red, green, blue);
     }
 
-    public static void setupMouseListeners(JFrame frame, JPanel renderPanel) {
+    public static void setupMouseListeners(JFrame frame, JPanel renderPanel) {     //to render mouse moves
         frame.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
