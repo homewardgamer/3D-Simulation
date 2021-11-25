@@ -7,7 +7,8 @@ A simple yet complex JAVA project which renders a 3D square by the help of matri
 # Tech Stack
 * Java
 * Swing
-* JAVA3D
+* AWT
+* XML
 
 <hr>
 
