@@ -1,12 +1,19 @@
 package com.oom.group3;
 
 public class Matrix4 {
+    // list of matrix values
     double[] values;
 
     public Matrix4(double[] values) {
         this.values = values;
     }
 
+    /**
+     * multiply the current matrix with 'other' matrix
+     *
+     * @param other: the other matrix to multiply with
+     * @return Matrix4: the resulting matrix
+     */
     public Matrix4 multiply(Matrix4 other) {
         double[] result = new double[16];
 
@@ -17,36 +24,22 @@ public class Matrix4 {
                 }
             }
         }
+
         return new Matrix4(result);
     }
 
-    public Point3D transform(Point3D in) {
-        return new Point3D(in.x * values[0] + in.y * values[4] + in.z * values[8] + in.w * values[12],
-                in.x * values[1] + in.y * values[5] + in.z * values[9] + in.w * values[13],
-                in.x * values[2] + in.y * values[6] + in.z * values[10] + in.w * values[14],
-                in.x * values[3] + in.y * values[7] + in.z * values[11] + in.w * values[15]);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-
-        for (int row = 0; row < 4; row++) {
-            for (int col = 0; col < 4; col++) {
-                sb.append(values[row * 4 + col]);
-
-                if (col != 3) {
-                    sb.append(",");
-                }
-            }
-
-            if (row != 3) {
-                sb.append(";\n ");
-            }
-        }
-
-        sb.append("]");
-        return sb.toString();
+    /**
+     * apply the transform to the given point
+     *
+     * @param point3D: the point to which to apply the transformation
+     * @return Point3D: the resulting point after applying the transformation
+     */
+    public Point3D transform(Point3D point3D) {
+        return new Point3D(
+                point3D.x * values[0] + point3D.y * values[4] + point3D.z * values[8] + point3D.w * values[12],
+                point3D.x * values[1] + point3D.y * values[5] + point3D.z * values[9] + point3D.w * values[13],
+                point3D.x * values[2] + point3D.y * values[6] + point3D.z * values[10] + point3D.w * values[14],
+                point3D.x * values[3] + point3D.y * values[7] + point3D.z * values[11] + point3D.w * values[15]
+        );
     }
 }

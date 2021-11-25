@@ -3,59 +3,83 @@
   <ID>JAVA</ID>
   <OriginalElement>/home/mitul/IdeaProjects/3D-Simulation</OriginalElement>
   <nodes>
-    <node x="386.83333333333326" y="-25.402507423292626">com.oom.group3.Point3D</node>
-    <node x="370.3333333333333" y="468.4025074232926">com.oom.group3.Cube</node>
-    <node x="365.33333333333326" y="221.5">com.oom.group3.Polygon3D</node>
-    <node x="29.8125" y="624.4025074232926">com.oom.group3.Object3D</node>
-    <node x="-103.7528868360277" y="221.0">com.oom.group3.Matrix4</node>
+    <node x="781.0174143280381" y="1395.6674364896073">com.oom.group3.shapes.CubeShape</node>
+    <node x="218.2514405020176" y="747.7309468822172">com.oom.group3.Point3D</node>
+    <node x="1046.2939732194932" y="795.0762124711316">com.oom.group3.util.Vector</node>
+    <node x="298.74085543658305" y="1055.0762124711316">com.oom.group3.Cube</node>
+    <node x="610.7727068607554" y="769.6674364896073">com.oom.group3.Polygon3D</node>
+    <node x="717.5174143280381" y="1170.3579676674365">com.oom.group3.Object3D</node>
+    <node x="-28.031950568036564" y="1198.0762124711316">com.oom.group3.Matrix4</node>
   </nodes>
   <notes />
   <edges>
     <edge source="com.oom.group3.Object3D" target="com.oom.group3.Polygon3D" relationship="TO_MANY">
-      <point x="112.22445150115482" y="-45.81293302540416" />
-      <point x="282.0369515011548" y="429.4512537116463" />
-      <point x="422.18627467442724" y="429.4512537116463" />
-      <point x="-133.14705865890602" y="86.85964463728948" />
-    </edge>
-    <edge source="com.oom.group3.Object3D" target="com.oom.group3.Point3D" relationship="CREATE">
-      <point x="-0.17162240184751454" y="-44.72170900692845" />
-      <point x="169.64087759815249" y="332.35103926096997" />
-      <point x="169.8125" y="332.35103926096997" />
-      <point x="169.8125" y="115.38122535370977" />
-      <point x="-157.16353309582126" y="56.2837327770024" />
+      <point x="70.0" y="-59.0" />
+      <point x="927.5174143280381" y="1161.1068129330254" />
+      <point x="927.439373527422" y="1161.1068129330254" />
+      <point x="126.66666666666669" y="84.5" />
     </edge>
     <edge source="com.oom.group3.Polygon3D" target="com.oom.group3.Point3D" relationship="TO_ONE">
-      <point x="9.590022215783051" y="-80.14763836569108" />
-      <point x="564.9233555491163" y="182.5487462883537" />
-      <point x="667.6666666666665" y="182.5487462883537" />
-      <point x="112.33333333333326" y="84.5" />
+      <point x="-95.0" y="-84.5" />
+      <point x="705.7727068607554" y="910.0" />
+      <point x="386.7514405020176" y="910.0" />
+      <point x="0.0" y="45.5" />
     </edge>
-    <edge source="com.oom.group3.Object3D" target="com.oom.group3.Polygon3D" relationship="CREATE">
-      <point x="58.4334584295612" y="-52.664632134609064" />
-      <point x="228.2459584295612" y="312.1004618937644" />
-      <point x="-177.5896843725942" y="6.100461893764418" />
+    <edge source="com.oom.group3.shapes.CubeShape" target="com.oom.group3.Polygon3D" relationship="CREATE">
+      <point x="-45.86383465136362" y="14.228637413394836" />
+      <point x="811.6535796766744" y="1507.7621247113161" />
+      <point x="274.9267676767678" y="1507.7621247113161" />
+      <point x="274.9267676767678" y="1022.3337182448037" />
+      <point x="674.1060401940888" y="1022.3337182448037" />
+      <point x="-126.66666666666667" y="84.5" />
+    </edge>
+    <edge source="com.oom.group3.Point3D" target="com.oom.group3.util.Vector" relationship="GENERALIZATION">
+      <point x="144.98547250798958" y="-3.937644341801388" />
+      <point x="531.7369130100071" y="736.9526558891455" />
+      <point x="1228.7939732194932" y="736.9526558891455" />
+      <point x="0.0" y="345.0" />
+    </edge>
+    <edge source="com.oom.group3.shapes.CubeShape" target="com.oom.group3.Point3D" relationship="CREATE">
+      <point x="44.551869736627054" y="22.5427251732101" />
+      <point x="902.0692840646651" y="1529.5866050808315" />
+      <point x="250.76794358130917" y="1529.5866050808315" />
+      <point x="250.76794358130917" y="862.0" />
+      <point x="250.25" y="862.0" />
+      <point x="-136.5014405020176" y="40.019053117782846" />
+    </edge>
+    <edge source="com.oom.group3.Object3D" target="com.oom.group3.Polygon3D" relationship="DEPENDENCY">
+      <point x="-2.324573681386937" y="-37.34526558891457" />
+      <point x="847.2043879907621" y="1192.012702078522" />
+      <point x="847.2043879907621" y="927.0623556581986" />
+      <point x="49.09449868196964" y="72.89491916859129" />
+    </edge>
+    <edge source="com.oom.group3.shapes.CubeShape" target="com.oom.group3.Object3D" relationship="GENERALIZATION">
+      <point x="0.47962749331463783" y="-25.11604418206457" />
+      <point x="857.9970418213527" y="1342.012702078522" />
+      <point x="857.5174143280381" y="1342.012702078522" />
+      <point x="0.0" y="59.0" />
     </edge>
     <edge source="com.oom.group3.Matrix4" target="com.oom.group3.Point3D" relationship="CREATE">
-      <point x="0.0" y="-85.0" />
-      <point x="21.2471131639723" y="44.41801385681296" />
-      <point x="442.99999999999994" y="44.41801385681296" />
-      <point x="-112.33333333333331" y="84.5" />
+      <point x="68.01708865510182" y="-63.92265887462668" />
+      <point x="164.98513808706525" y="766.2120005933302" />
+      <point x="238.77920633132425" y="766.2120005933302" />
+      <point x="238.77920633132425" y="786.8623053899054" />
+      <point x="-153.07189782384762" y="-6.368641492311781" />
     </edge>
     <edge source="com.oom.group3.Cube" target="com.oom.group3.Polygon3D" relationship="DEPENDENCY">
-      <point x="0.27983063895317173" y="-204.34477070273834" />
-      <point x="555.6131639722864" y="411.59411085450347" />
-      <point x="555.3333333333333" y="411.59411085450347" />
-      <point x="555.3333333333333" y="379.6344972369616" />
-      <point x="562.1605080831408" y="379.6344972369616" />
-      <point x="6.827174749807568" y="24.65127020785218" />
+      <point x="162.67023001376344" y="-189.84295612009237" />
+      <point x="646.4110854503465" y="1084.0" />
+      <point x="742.0230946882216" y="1084.0" />
+      <point x="-58.74961217253383" y="82.21478060046195" />
     </edge>
     <edge source="com.oom.group3.Polygon3D" target="com.oom.group3.Point3D" relationship="DEPENDENCY">
-      <point x="-92.87540282570683" y="-79.24315745106804" />
-      <point x="462.9124759621719" y="226.75684254893196" />
-      <point x="-92.42085737116133" y="78.5684408813155" />
+      <point x="95.0" y="-84.5" />
+      <point x="895.7727068607554" y="881.0" />
+      <point x="499.0847738353509" y="881.0" />
+      <point x="112.33333333333331" y="45.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic" zoom="0.9164021164021164" showDependencies="true" x="321.0" y="436.5" />
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="true" x="691.5" y="1133.0" />
   <SelectedNodes />
   <Categories>
     <Category>Constructors</Category>

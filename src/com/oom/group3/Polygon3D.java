@@ -2,16 +2,16 @@ package com.oom.group3;
 
 import java.awt.Color;
 
-// Here Polygon3D is the Triangle
+// Polygon3D is a polygon (triangle) in 3D space
 public class Polygon3D {
-    public Point3D v1, v2, v3;
+    public Point3D A, B, C;
     public Color color;
 
-    // to store three vertices and color of the Triangle (simplest Polygon)
-    public Polygon3D(Point3D v1, Point3D v2, Point3D v3, Color color) {
-        this.v1 = v1;
-        this.v2 = v2;
-        this.v3 = v3;
+    // to store three vertices and color of the Triangle (the simplest polygon)
+    public Polygon3D(Point3D A, Point3D B, Point3D C, Color color) {
+        this.A = A;
+        this.B = B;
+        this.C = C;
         this.color = color;
     }
 }
