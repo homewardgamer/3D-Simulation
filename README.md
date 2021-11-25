@@ -1,7 +1,8 @@
 # 3D-Simulation
-Project repository for OOM Project 3
+A simple yet complex JAVA project which renders a 3D square by the help of matrix transformation in 3d space.Use the mouse to rotate the cube alogn the X,Y and Z axis. Double lcick on the screen to reset the shape to it's original form. Zoom onto the cube by scrolling up and down by pressing the `Cntrl` or `Cmd` key.
 
-# TODO
-- [ ] Implement basic code
-- [ ] Provide user to select different shapes
-- [ ] Read shape data from JSON files
+# Tech Stack
+* Java
+* Swing
+* JAVA3D
+
