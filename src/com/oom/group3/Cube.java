@@ -12,6 +12,7 @@ public class Cube {
     static Integer[] prevMouse = { null, null };
     static double pitch, roll, heading, fovValue;
     static final int windowSize = 900;
+    static boolean showEdges = false;
 
     public static void main(String[] args) {
         // Schedule a job for the event dispatch thread:
@@ -76,15 +77,19 @@ public class Cube {
                 // initialize array with extremely far away depths
                 Arrays.fill(zBuffer, Double.NEGATIVE_INFINITY);
 
-                for (Polygon3D t : polygons) {
-                    Point3D v1 = transform.transform(t.v1);
-                    Point3D v2 = transform.transform(t.v2);
-                    Point3D v3 = transform.transform(t.v3);
+                for (Polygon3D polygon : polygons) {
+                    Point3D v1 = transform.transform(polygon.v1);
+                    Point3D v2 = transform.transform(polygon.v2);
+                    Point3D v3 = transform.transform(polygon.v3);
 
                     Point3D ab = new Point3D(v2.x - v1.x, v2.y - v1.y, v2.z - v1.z, v2.w - v1.w);
                     Point3D ac = new Point3D(v3.x - v1.x, v3.y - v1.y, v3.z - v1.z, v3.w - v1.w);
-                    Point3D norm = new Point3D(ab.y * ac.z - ab.z * ac.y, ab.z * ac.x - ab.x * ac.z,
-                            ab.x * ac.y - ab.y * ac.x, 1);
+                    Point3D norm = new Point3D(
+                            ab.y * ac.z - ab.z * ac.y,
+                            ab.z * ac.x - ab.x * ac.z,
+                            ab.x * ac.y - ab.y * ac.x,
+                            1
+                    );
 
                     double normalLength = Math.sqrt(norm.x * norm.x + norm.y * norm.y + norm.z * norm.z);
                     norm.x /= normalLength;
@@ -125,15 +130,10 @@ public class Cube {
                                 int zIndex = y * img.getWidth() + x;
 
                                 if (zBuffer[zIndex] < depth) {
-                                    final double k = 0.025;
+                                    final double k = 0.01;
+                                    boolean liesOnEdge = !(b1 >= k && b1 <= 1-k && b2 >= k && b2 <= 1-k && b3 >= k && b3 <= 1-k);
 
-                                    if (b1 >= k && b1 <= 1-k && b2 >= k && b2 <= 1-k && b3 >= k && b3 <= 1-k) {
-                                        img.setRGB(x, y, getShade(t.color, angleCos).getRGB());
-                                    }
-                                    else {
-                                        img.setRGB(x, y, getShade(Color.DARK_GRAY, angleCos).getRGB());
-                                    }
-
+                                    img.setRGB(x, y, getShade((showEdges && liesOnEdge) ? Color.DARK_GRAY : polygon.color, angleCos).getRGB());
                                     zBuffer[zIndex] = depth;
                                 }
                             }
@@ -145,6 +145,7 @@ public class Cube {
             }
         };
 
+        setupKeyboardListeners(frame, renderPanel);
         setupMouseListeners(frame, renderPanel);
 
         frame.setTitle("OOM Project3");
@@ -198,6 +199,26 @@ public class Cube {
         int blue = (int) Math.pow(blueLinear, 1 / shadingMultiplier);
 
         return new Color(red, green, blue);
+    }
+
+    public static void setupKeyboardListeners(JFrame frame, JPanel renderPanel) {
+        frame.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent keyEvent) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent keyEvent) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent keyEvent) {
+                if (keyEvent.getKeyChar() == ' ') {
+                    showEdges ^= true;
+                    renderPanel.repaint();
+                }
+            }
+        });
     }
 
     public static void setupMouseListeners(JFrame frame, JPanel renderPanel) {
