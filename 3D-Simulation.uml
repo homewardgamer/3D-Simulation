@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/home/mitul/IdeaProjects/3D-Simulation</OriginalElement>
+  <nodes>
+    <node x="386.83333333333326" y="-25.402507423292626">com.oom.group3.Point3D</node>
+    <node x="370.3333333333333" y="468.4025074232926">com.oom.group3.Cube</node>
+    <node x="365.33333333333326" y="221.5">com.oom.group3.Polygon3D</node>
+    <node x="29.8125" y="624.4025074232926">com.oom.group3.Object3D</node>
+    <node x="-103.7528868360277" y="221.0">com.oom.group3.Matrix4</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.oom.group3.Object3D" target="com.oom.group3.Polygon3D" relationship="TO_MANY">
+      <point x="112.22445150115482" y="-45.81293302540416" />
+      <point x="282.0369515011548" y="429.4512537116463" />
+      <point x="422.18627467442724" y="429.4512537116463" />
+      <point x="-133.14705865890602" y="86.85964463728948" />
+    </edge>
+    <edge source="com.oom.group3.Object3D" target="com.oom.group3.Point3D" relationship="CREATE">
+      <point x="-0.17162240184751454" y="-44.72170900692845" />
+      <point x="169.64087759815249" y="332.35103926096997" />
+      <point x="169.8125" y="332.35103926096997" />
+      <point x="169.8125" y="115.38122535370977" />
+      <point x="-157.16353309582126" y="56.2837327770024" />
+    </edge>
+    <edge source="com.oom.group3.Polygon3D" target="com.oom.group3.Point3D" relationship="TO_ONE">
+      <point x="9.590022215783051" y="-80.14763836569108" />
+      <point x="564.9233555491163" y="182.5487462883537" />
+      <point x="667.6666666666665" y="182.5487462883537" />
+      <point x="112.33333333333326" y="84.5" />
+    </edge>
+    <edge source="com.oom.group3.Object3D" target="com.oom.group3.Polygon3D" relationship="CREATE">
+      <point x="58.4334584295612" y="-52.664632134609064" />
+      <point x="228.2459584295612" y="312.1004618937644" />
+      <point x="-177.5896843725942" y="6.100461893764418" />
+    </edge>
+    <edge source="com.oom.group3.Matrix4" target="com.oom.group3.Point3D" relationship="CREATE">
+      <point x="0.0" y="-85.0" />
+      <point x="21.2471131639723" y="44.41801385681296" />
+      <point x="442.99999999999994" y="44.41801385681296" />
+      <point x="-112.33333333333331" y="84.5" />
+    </edge>
+    <edge source="com.oom.group3.Cube" target="com.oom.group3.Polygon3D" relationship="DEPENDENCY">
+      <point x="0.27983063895317173" y="-204.34477070273834" />
+      <point x="555.6131639722864" y="411.59411085450347" />
+      <point x="555.3333333333333" y="411.59411085450347" />
+      <point x="555.3333333333333" y="379.6344972369616" />
+      <point x="562.1605080831408" y="379.6344972369616" />
+      <point x="6.827174749807568" y="24.65127020785218" />
+    </edge>
+    <edge source="com.oom.group3.Polygon3D" target="com.oom.group3.Point3D" relationship="DEPENDENCY">
+      <point x="-92.87540282570683" y="-79.24315745106804" />
+      <point x="462.9124759621719" y="226.75684254893196" />
+      <point x="-92.42085737116133" y="78.5684408813155" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.9164021164021164" showDependencies="true" x="321.0" y="436.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
