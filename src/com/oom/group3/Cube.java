@@ -92,16 +92,16 @@ public class Cube {
 
                 // Y-axis
                 Matrix4 yAxisRotation = new Matrix4(new double[] {
-                        Math.cos(gamma), 0, -Math.sin(gamma), 0,
+                        Math.cos(beta), 0, -Math.sin(beta), 0,
                         0, 1, 0, 0,
-                        Math.sin(gamma), 0, Math.cos(gamma), 0,
+                        Math.sin(beta), 0, Math.cos(beta), 0,
                         0, 0, 0, 1
                 });
 
                 // Z-axis
                 Matrix4 zAxisRotation = new Matrix4(new double[] {
-                        Math.cos(beta), -Math.sin(beta), 0, 0,
-                        Math.sin(beta), Math.cos(beta), 0, 0,
+                        Math.cos(gamma), -Math.sin(gamma), 0, 0,
+                        Math.sin(gamma), Math.cos(gamma), 0, 0,
                         0, 0, 1, 0,
                         0, 0, 0, 1
                 });
@@ -240,10 +240,10 @@ public class Cube {
                 float dX = (mouseEvent.getX() - prevMouse[0]), dY = (mouseEvent.getY() - prevMouse[1]);
 
                 if (mouseEvent.isShiftDown()) {
-                    beta -= dY * 0.01;
+                    gamma -= dY * 0.01;
                 } else {
                     alpha -= dY * 0.01;
-                    gamma += dX * 0.01;
+                    beta += dX * 0.01;
                 }
 
                 renderPanel.repaint();
