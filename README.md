@@ -23,7 +23,7 @@ A simple yet complex JAVA project which renders a 3D square by the help of matri
 <hr>
 
 # Presentation
-[Click here](https://docs.google.com/presentation/d/19Yr7CjsVunxJDjHIW9fgGlIxNPqVLDEjLht2E5S5cSQ/edit?usp=sharing)
+[Click here](https://docs.google.com/presentation/d/12GLvqxY568OwiG_0SM7j-8IQT2RtCNAT/edit?usp=sharing)
 
 <hr>
 
